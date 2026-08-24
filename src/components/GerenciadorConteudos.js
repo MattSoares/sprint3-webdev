@@ -1,13 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormularioConteudo from "@/components/FormularioConteudo";
 import ListaConteudos from "@/components/ListaConteudos";
 import conteudosIniciais from "@/data/conteudosIniciais";
 
+const CHAVE_LOCAL_STORAGE = "modoEstudoConteudos";
+
 export default function GerenciadorConteudos() {
   const [conteudos, setConteudos] = useState(conteudosIniciais);
   const [busca, setBusca] = useState("");
+  const [dadosCarregados, setDadosCarregados] = useState(false);
+
+  useEffect(() => {
+    const dadosSalvos = localStorage.getItem(CHAVE_LOCAL_STORAGE);
+
+    if (dadosSalvos) {
+      try {
+        const conteudosSalvos = JSON.parse(dadosSalvos);
+        setConteudos(conteudosSalvos);
+      } catch {
+        setConteudos(conteudosIniciais);
+      }
+    }
+
+    setDadosCarregados(true);
+  }, []);
+
+  useEffect(() => {
+    if (dadosCarregados) {
+      localStorage.setItem(
+        CHAVE_LOCAL_STORAGE,
+        JSON.stringify(conteudos),
+      );
+    }
+  }, [conteudos, dadosCarregados]);
 
   function adicionarConteudo(novoConteudo) {
     setConteudos((conteudosAtuais) => [
@@ -61,9 +88,15 @@ export default function GerenciadorConteudos() {
           placeholder="Digite um título ou disciplina"
         />
 
-        <span>
-          {conteudosFiltrados.length} conteúdo(s) encontrado(s)
-        </span>
+        <div className="informacoes-busca">
+          <span>
+            {conteudosFiltrados.length} conteúdo(s) encontrado(s)
+          </span>
+
+          <span className="aviso-salvamento">
+            Dados salvos neste navegador
+          </span>
+        </div>
       </section>
 
       <ListaConteudos
