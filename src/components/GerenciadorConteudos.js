@@ -16,6 +16,27 @@ export default function GerenciadorConteudos() {
     ]);
   }
 
+  function favoritarConteudo(id) {
+    setConteudos((conteudosAtuais) =>
+      conteudosAtuais.map((conteudo) => {
+        if (conteudo.id === id) {
+          return {
+            ...conteudo,
+            favorito: !conteudo.favorito,
+          };
+        }
+
+        return conteudo;
+      }),
+    );
+  }
+
+  function excluirConteudo(id) {
+    setConteudos((conteudosAtuais) =>
+      conteudosAtuais.filter((conteudo) => conteudo.id !== id),
+    );
+  }
+
   const conteudosFiltrados = conteudos.filter((conteudo) => {
     const textoBuscado = busca.toLowerCase();
 
@@ -45,7 +66,11 @@ export default function GerenciadorConteudos() {
         </span>
       </section>
 
-      <ListaConteudos conteudos={conteudosFiltrados} />
+      <ListaConteudos
+        conteudos={conteudosFiltrados}
+        onFavoritar={favoritarConteudo}
+        onExcluir={excluirConteudo}
+      />
     </>
   );
 }

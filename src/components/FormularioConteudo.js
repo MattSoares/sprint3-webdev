@@ -22,6 +22,7 @@ export default function FormularioConteudo({ onAdicionar }) {
       tipo,
       descricao: descricao.trim(),
       icone: "📚",
+      favorito: false,
     };
 
     onAdicionar(novoConteudo);

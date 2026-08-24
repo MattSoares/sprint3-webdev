@@ -6,6 +6,7 @@ const conteudosIniciais = [
     tipo: "Anotação",
     descricao: "Revisão de funções, limites e derivadas.",
     icone: "📐",
+    favorito: false,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const conteudosIniciais = [
     tipo: "Mapa mental",
     descricao: "Resumo dos principais acontecimentos da Revolução Francesa.",
     icone: "🗺️",
+    favorito: false,
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ const conteudosIniciais = [
     tipo: "Resumo",
     descricao: "Conceitos básicos sobre células e genética.",
     icone: "🧬",
+    favorito: false,
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ const conteudosIniciais = [
     tipo: "Fórmula",
     descricao: "Fórmulas importantes de velocidade, força e energia.",
     icone: "⚡",
+    favorito: false,
   },
 ];
 

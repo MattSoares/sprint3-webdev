@@ -377,3 +377,66 @@ a {
   }
 }
 
+.topo-card {
+  display: flex;
+  min-height: 2.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.indicador-favorito {
+  border-radius: 2rem;
+  padding: 0.3rem 0.7rem;
+  background: rgba(232, 21, 123, 0.15);
+  color: var(--cor-principal);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.card-favorito {
+  border-color: var(--cor-principal);
+}
+
+.acoes-card {
+  display: flex;
+  margin-top: 1.5rem;
+  gap: 0.75rem;
+}
+
+.botao-card {
+  border: 1px solid var(--cor-borda);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  background: transparent;
+  color: var(--cor-texto);
+  cursor: pointer;
+  font-weight: 700;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.botao-favorito:hover,
+.favorito-ativo {
+  border-color: var(--cor-principal);
+  background: rgba(232, 21, 123, 0.12);
+  color: var(--cor-principal);
+}
+
+.botao-excluir:hover {
+  border-color: #ff5c5c;
+  background: rgba(255, 92, 92, 0.12);
+  color: #ff7a7a;
+}
+
+@media (max-width: 450px) {
+  .acoes-card {
+    flex-direction: column;
+  }
+
+  .botao-card {
+    width: 100%;
+  }
+}

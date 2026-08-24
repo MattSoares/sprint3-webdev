@@ -1,11 +1,16 @@
 import CardConteudo from "@/components/CardConteudo";
 
-export default function ListaConteudos({ conteudos }) {
+export default function ListaConteudos({
+  conteudos,
+  onFavoritar,
+  onExcluir,
+}) {
   return (
     <section className="secao-conteudos" id="conteudos">
       <div className="titulo-secao">
         <span className="etiqueta">CONTEÚDOS</span>
         <h2>Materiais para estudar</h2>
+
         <p>
           Consulte anotações, resumos e outros materiais organizados por
           disciplina.
@@ -13,13 +18,17 @@ export default function ListaConteudos({ conteudos }) {
       </div>
 
       {conteudos.length === 0 ? (
-        <p className="mensagem-vazia">Nenhum conteúdo encontrado.</p>
+        <p className="mensagem-vazia">
+          Nenhum conteúdo encontrado.
+        </p>
       ) : (
         <div className="grade-conteudos">
           {conteudos.map((conteudo) => (
             <CardConteudo
               key={conteudo.id}
               conteudo={conteudo}
+              onFavoritar={onFavoritar}
+              onExcluir={onExcluir}
             />
           ))}
         </div>
