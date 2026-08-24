@@ -36,6 +36,49 @@ a {
   text-decoration: none;
 }
 
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--cor-borda);
+  background: rgba(13, 13, 16, 0.95);
+}
+
+.navegacao {
+  display: flex;
+  width: min(100% - 2rem, 1100px);
+  min-height: 4.5rem;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.logo span,
+.rodape strong {
+  color: var(--cor-principal);
+}
+
+.links-navegacao {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.links-navegacao a {
+  color: var(--cor-texto-secundario);
+  transition: color 0.2s;
+}
+
+.links-navegacao a:hover,
+.links-navegacao a:focus-visible {
+  color: var(--cor-principal);
+}
+
 .pagina-inicial {
   min-height: 100vh;
 }
@@ -119,7 +162,22 @@ a {
   font-size: clamp(1.8rem, 5vw, 2.7rem);
 }
 
+.rodape {
+  border-top: 1px solid var(--cor-borda);
+  padding: 2rem 1rem;
+  color: var(--cor-texto-secundario);
+  text-align: center;
+}
+
 @media (max-width: 600px) {
+  .navegacao {
+    min-height: 4rem;
+  }
+
+  .links-navegacao {
+    gap: 1rem;
+  }
+
   .apresentacao {
     min-height: 75vh;
   }

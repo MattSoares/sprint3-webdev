@@ -1,0 +1,20 @@
+export default function Header() {
+  return (
+    <header className="cabecalho">
+      <nav className="navegacao" aria-label="Navegação principal">
+        <a className="logo" href="#inicio">
+          Modo<span>Estudo</span>
+        </a>
+
+        <ul className="links-navegacao">
+          <li>
+            <a href="#inicio">Início</a>
+          </li>
+          <li>
+            <a href="#projeto">Projeto</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+}
