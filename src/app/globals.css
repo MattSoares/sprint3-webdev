@@ -154,6 +154,7 @@ a {
   border-radius: 1rem;
   padding: 2rem;
   background: var(--cor-superficie);
+  cursor: pointer;
 }
 
 .resumo-projeto h2 {
@@ -205,6 +206,7 @@ a {
   transition:
     border-color 0.2s,
     transform 0.2s;
+  cursor: pointer;
 }
 
 .card-conteudo:hover {
@@ -251,6 +253,98 @@ a {
   padding: 2rem;
   color: var(--cor-texto-secundario);
   text-align: center;
+}
+
+.secao-formulario {
+  width: min(100% - 2rem, 1100px);
+  margin: 0 auto 4rem;
+  scroll-margin-top: 6rem;
+}
+
+.formulario-conteudo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 1rem;
+  padding: 2rem;
+  background: var(--cor-superficie);
+}
+
+.campo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.campo-formulario label,
+.secao-busca label {
+  font-weight: 700;
+}
+
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea,
+.secao-busca input {
+  width: 100%;
+  border: 1px solid var(--cor-borda);
+  border-radius: 0.6rem;
+  padding: 0.8rem;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font: inherit;
+}
+
+.campo-formulario textarea {
+  resize: vertical;
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus,
+.secao-busca input:focus {
+  border-color: var(--cor-principal);
+  outline: 2px solid rgba(232, 21, 123, 0.2);
+}
+
+.campo-descricao {
+  grid-column: 1 / -1;
+}
+
+.botao-formulario {
+  grid-column: 1 / -1;
+  justify-self: start;
+  border: 0;
+}
+
+.secao-busca {
+  display: grid;
+  width: min(100% - 2rem, 1100px);
+  margin: 0 auto 2rem;
+  gap: 0.6rem;
+}
+
+.secao-busca span {
+  color: var(--cor-texto-secundario);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .formulario-conteudo {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  .campo-descricao,
+  .botao-formulario {
+    grid-column: auto;
+  }
+
+  .botao-formulario {
+    width: 100%;
+    justify-self: stretch;
+    text-align: center;
+  }
 }
 
 @media (max-width: 700px) {

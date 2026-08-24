@@ -16,6 +16,10 @@ export default function Header() {
           </li>
 
           <li>
+            <a href="#cadastro">Adicionar</a>
+          </li>
+          
+          <li>
             <a href="#conteudos">Conteúdos</a>
           </li>
         </ul>

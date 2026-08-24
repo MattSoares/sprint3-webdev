@@ -1,8 +1,7 @@
 import Footer from "@/components/Footer";
+import GerenciadorConteudos from "@/components/GerenciadorConteudos";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import ListaConteudos from "@/components/ListaConteudos";
-import conteudosIniciais from "@/data/conteudosIniciais";
 
 export default function Home() {
   return (
@@ -23,7 +22,7 @@ export default function Home() {
           </p>
         </section>
 
-        <ListaConteudos conteudos={conteudosIniciais} />
+        <GerenciadorConteudos />
       </main>
 
       <Footer />
