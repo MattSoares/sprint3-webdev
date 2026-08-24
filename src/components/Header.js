@@ -10,8 +10,13 @@ export default function Header() {
           <li>
             <a href="#inicio">Início</a>
           </li>
+
           <li>
             <a href="#projeto">Projeto</a>
+          </li>
+
+          <li>
+            <a href="#conteudos">Conteúdos</a>
           </li>
         </ul>
       </nav>
