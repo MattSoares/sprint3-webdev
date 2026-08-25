@@ -11,14 +11,14 @@ export default function Header() {
             <a href="#inicio">Início</a>
           </li>
 
-          <li>
-            <a href="#projeto">Projeto</a>
+          <li className="link-opcional">
+            <a href="#destaques">Destaques</a>
           </li>
 
           <li>
             <a href="#cadastro">Adicionar</a>
           </li>
-          
+
           <li>
             <a href="#conteudos">Conteúdos</a>
           </li>
