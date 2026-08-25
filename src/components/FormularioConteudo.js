@@ -2,30 +2,56 @@
 
 import { useState } from "react";
 
-export default function FormularioConteudo({ onAdicionar }) {
-  const [titulo, setTitulo] = useState("");
-  const [disciplina, setDisciplina] = useState("");
-  const [tipo, setTipo] = useState("Resumo");
-  const [descricao, setDescricao] = useState("");
+const iconesPorTipo = {
+  Resumo: "📚",
+  Anotação: "📝",
+  Exercício: "✅",
+  Fórmula: "📐",
+  "Mapa mental": "🗺️",
+};
 
-  function adicionarConteudo(evento) {
+export default function FormularioConteudo({
+  onAdicionar,
+  conteudoEmEdicao,
+  onSalvarEdicao,
+  onCancelarEdicao,
+}) {
+  const [titulo, setTitulo] = useState(conteudoEmEdicao?.titulo ?? "");
+  const [disciplina, setDisciplina] = useState(
+    conteudoEmEdicao?.disciplina ?? "",
+  );
+  const [tipo, setTipo] = useState(conteudoEmEdicao?.tipo ?? "Resumo");
+  const [descricao, setDescricao] = useState(
+    conteudoEmEdicao?.descricao ?? "",
+  );
+
+  function enviarFormulario(evento) {
     evento.preventDefault();
 
     if (!titulo.trim() || !disciplina.trim() || !descricao.trim()) {
       return;
     }
 
-    const novoConteudo = {
-      id: Math.floor(Math.random() * 1000000),
+    const dadosConteudo = {
       titulo: titulo.trim(),
       disciplina: disciplina.trim(),
       tipo,
       descricao: descricao.trim(),
-      icone: "📚",
-      favorito: false,
+      icone: iconesPorTipo[tipo],
     };
 
-    onAdicionar(novoConteudo);
+    if (conteudoEmEdicao) {
+      onSalvarEdicao({
+        ...conteudoEmEdicao,
+        ...dadosConteudo,
+      });
+    } else {
+      onAdicionar({
+        id: Math.floor(Math.random() * 1000000),
+        ...dadosConteudo,
+        favorito: false,
+      });
+    }
 
     setTitulo("");
     setDisciplina("");
@@ -36,15 +62,24 @@ export default function FormularioConteudo({ onAdicionar }) {
   return (
     <section className="secao-formulario" id="cadastro">
       <div className="titulo-secao">
-        <span className="etiqueta">NOVO CONTEÚDO</span>
-        <h2>Adicionar material de estudo</h2>
-        <p>Preencha os campos para adicionar um conteúdo à sua lista.</p>
+        <span className="etiqueta">
+          {conteudoEmEdicao ? "EDITAR CONTEÚDO" : "NOVO CONTEÚDO"}
+        </span>
+        <h2>
+          {conteudoEmEdicao
+            ? "Atualizar material de estudo"
+            : "Adicionar material de estudo"}
+        </h2>
+        <p>
+          {conteudoEmEdicao
+            ? "Altere os campos e salve as novas informações."
+            : "Preencha os campos para adicionar um conteúdo à sua lista."}
+        </p>
       </div>
 
-      <form className="formulario-conteudo" onSubmit={adicionarConteudo}>
+      <form className="formulario-conteudo" onSubmit={enviarFormulario}>
         <div className="campo-formulario">
           <label htmlFor="titulo">Título</label>
-
           <input
             id="titulo"
             type="text"
@@ -57,7 +92,6 @@ export default function FormularioConteudo({ onAdicionar }) {
 
         <div className="campo-formulario">
           <label htmlFor="disciplina">Disciplina</label>
-
           <input
             id="disciplina"
             type="text"
@@ -70,7 +104,6 @@ export default function FormularioConteudo({ onAdicionar }) {
 
         <div className="campo-formulario">
           <label htmlFor="tipo">Tipo</label>
-
           <select
             id="tipo"
             value={tipo}
@@ -86,7 +119,6 @@ export default function FormularioConteudo({ onAdicionar }) {
 
         <div className="campo-formulario campo-descricao">
           <label htmlFor="descricao">Descrição</label>
-
           <textarea
             id="descricao"
             value={descricao}
@@ -97,9 +129,21 @@ export default function FormularioConteudo({ onAdicionar }) {
           />
         </div>
 
-        <button className="botao-principal botao-formulario" type="submit">
-          Adicionar conteúdo
-        </button>
+        <div className="acoes-formulario">
+          <button className="botao-principal botao-formulario" type="submit">
+            {conteudoEmEdicao ? "Salvar alterações" : "Adicionar conteúdo"}
+          </button>
+
+          {conteudoEmEdicao && (
+            <button
+              className="botao-secundario"
+              type="button"
+              onClick={onCancelarEdicao}
+            >
+              Cancelar edição
+            </button>
+          )}
+        </div>
       </form>
     </section>
   );

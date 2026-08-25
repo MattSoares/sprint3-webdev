@@ -1,5 +1,6 @@
 export default function CardConteudo({
   conteudo,
+  onEditar,
   onFavoritar,
   onExcluir,
 }) {
@@ -28,6 +29,14 @@ export default function CardConteudo({
       </strong>
 
       <div className="acoes-card">
+        <button
+          className="botao-card botao-editar"
+          type="button"
+          onClick={() => onEditar(conteudo)}
+        >
+          Editar
+        </button>
+
         <button
           className={`botao-card botao-favorito ${
             conteudo.favorito ? "favorito-ativo" : ""

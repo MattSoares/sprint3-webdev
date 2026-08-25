@@ -2,6 +2,7 @@ import CardConteudo from "@/components/CardConteudo";
 
 export default function ListaConteudos({
   conteudos,
+  onEditar,
   onFavoritar,
   onExcluir,
 }) {
@@ -27,6 +28,7 @@ export default function ListaConteudos({
             <CardConteudo
               key={conteudo.id}
               conteudo={conteudo}
+              onEditar={onEditar}
               onFavoritar={onFavoritar}
               onExcluir={onExcluir}
             />
