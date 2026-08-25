@@ -78,7 +78,7 @@ A inteligência artificial foi utilizada como ferramenta de apoio durante o dese
 
 ## Deploy
 
-O link da Vercel será inserido após a publicação da versão final.
+[Aplicação publicada na Vercel](https://sprint3-webdev-phi.vercel.app/)
 
 ## Integrantes
 
