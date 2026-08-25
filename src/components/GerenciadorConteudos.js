@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Estatisticas from "@/components/Estatisticas";
 import FormularioConteudo from "@/components/FormularioConteudo";
 import ListaConteudos from "@/components/ListaConteudos";
 import conteudosIniciais from "@/data/conteudosIniciais";
@@ -79,6 +80,8 @@ export default function GerenciadorConteudos() {
 
   return (
     <>
+      <Estatisticas conteudos={conteudos} />
+
       <FormularioConteudo onAdicionar={adicionarConteudo} />
 
       <section className="secao-busca">

@@ -168,6 +168,40 @@ a {
   font-size: clamp(1.8rem, 5vw, 2.7rem);
 }
 
+.secao-estatisticas {
+  width: min(100% - 2rem, 1100px);
+  margin: 0 auto 8rem;
+  scroll-margin-top: 6rem;
+}
+
+.grade-estatisticas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card-estatistica {
+  display: flex;
+  min-height: 10rem;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--cor-borda);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: var(--cor-superficie);
+}
+
+.card-estatistica strong {
+  color: var(--cor-principal);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1;
+}
+
+.card-estatistica span {
+  color: var(--cor-texto-secundario);
+  font-size: 0.95rem;
+}
+
 .rodape {
   border-top: 1px solid var(--cor-borda);
   padding: 2rem 1rem;
@@ -337,6 +371,10 @@ a {
 }
 
 @media (max-width: 700px) {
+  .grade-estatisticas {
+    grid-template-columns: 1fr;
+  }
+
   .formulario-conteudo {
     grid-template-columns: 1fr;
     padding: 1.5rem;
@@ -388,6 +426,10 @@ a {
   .secao-formulario {
     margin-bottom: 5rem;
     padding-top: 0;
+  }
+
+  .secao-estatisticas {
+    margin-bottom: 5rem;
   }
 
   .secao-conteudos {
