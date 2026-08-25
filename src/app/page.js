@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import GerenciadorConteudos from "@/components/GerenciadorConteudos";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Slideshow from "@/components/Slideshow";
 
 export default function Home() {
   return (
@@ -21,6 +22,8 @@ export default function Home() {
             simples e fácil de utilizar.
           </p>
         </section>
+
+        <Slideshow />
 
         <GerenciadorConteudos />
       </main>
