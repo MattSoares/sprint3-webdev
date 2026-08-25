@@ -13,18 +13,22 @@ export default function GerenciadorConteudos() {
   const [dadosCarregados, setDadosCarregados] = useState(false);
 
   useEffect(() => {
-    const dadosSalvos = localStorage.getItem(CHAVE_LOCAL_STORAGE);
+    const temporizador = setTimeout(() => {
+      const dadosSalvos = localStorage.getItem(CHAVE_LOCAL_STORAGE);
 
-    if (dadosSalvos) {
-      try {
-        const conteudosSalvos = JSON.parse(dadosSalvos);
-        setConteudos(conteudosSalvos);
-      } catch {
-        setConteudos(conteudosIniciais);
+      if (dadosSalvos) {
+        try {
+          const conteudosSalvos = JSON.parse(dadosSalvos);
+          setConteudos(conteudosSalvos);
+        } catch {
+          localStorage.removeItem(CHAVE_LOCAL_STORAGE);
+        }
       }
-    }
 
-    setDadosCarregados(true);
+      setDadosCarregados(true);
+    }, 0);
+
+    return () => clearTimeout(temporizador);
   }, []);
 
   useEffect(() => {
